@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="types">
+		<item>@string/type_av</item>
+		<item>@string/type_media</item>
+		<item>@string/type_cv</item>
+		<item>@string/type_vc</item>
+		<item>@string/type_user</item>
+		<item>@string/type_live</item>
+	</string-array>
+	<string-array name="hints">
+		<item>@string/hint_av</item>
+		<item>@string/hint_media</item>
+		<item>@string/hint_cv</item>
+		<item>@string/hint_vc</item>
+		<item>@string/hint_user</item>
+		<item>@string/hint_live</item>
+	</string-array>
+	<integer-array name="icons">
+		<item>@drawable/ic_av</item>
+		<item>@drawable/ic_media</item>
+		<item>@drawable/ic_cv</item>
+		<item>@drawable/ic_vc</item>
+		<item>@drawable/ic_user</item>
+		<item>@drawable/ic_live</item>
+	</integer-array>
+</resources>

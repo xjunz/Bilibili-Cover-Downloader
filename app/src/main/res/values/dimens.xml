@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<resources>
+		<dimen name="d_mini_icon">20dp</dimen>
+		<dimen name="minus_d_small_fab">-20dp</dimen>
+	</resources>

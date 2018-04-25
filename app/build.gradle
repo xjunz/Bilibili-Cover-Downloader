@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "21.1.0"
+
+    defaultConfig {
+        applicationId "me.xjz814.bili_cover_downloader"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1842501
+        versionName "18.4.25.A"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+	compile 'com.android.support:support-v4:+'
+	compile project(':a14_ui')
+	compile 'com.bm.photoview:library:1.4.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}

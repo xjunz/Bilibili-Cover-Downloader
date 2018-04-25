@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<RelativeLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:gravity="center"
+		android:orientation="horizontal">
+
+		<ImageButton
+			android:id="@+id/ib_previous"
+			android:onClick="gotoPreviousPath"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:background="?android:selectableItemBackgroundBorderless"
+			android:layout_marginRight="8dp"
+			android:src="@drawable/ic_chevron_right"
+			android:rotation="-90"
+			android:tint="?android:textColorSecondary"/>
+		<RadioButton
+			android:id="@+id/rb_cur_dir"
+			android:layout_centerVertical="true"
+			android:layout_marginEnd="@dimen/spacing_normal"
+			android:layout_alignParentEnd="true"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"/>
+		
+		<TextView
+			android:layout_centerVertical="true"
+			android:layout_toStartOf="@id/rb_cur_dir"
+			android:layout_toEndOf="@id/ib_previous"
+			android:id="@+id/tv_cur_path"
+			android:text="当前目录"
+			android:maxLines="2"
+			android:ellipsize="end"
+			android:textStyle="italic"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+		
+	</RelativeLayout>
+
+	<View
+		android:background="?android:attr/dividerVertical"
+		android:layout_height="1px"
+		android:layout_width="match_parent"/>
+
+	<ListView
+		android:id="@+id/lv_file"
+		android:divider="@null"
+		android:layout_height="1200px"
+		android:layout_width="match_parent"/>
+
+	<View
+		android:background="?android:attr/dividerVertical"
+		android:layout_height="1px"
+		android:layout_width="match_parent"/>
+
+</LinearLayout>
+

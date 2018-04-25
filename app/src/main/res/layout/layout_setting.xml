@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:paddingLeft="@dimen/spacing_large"
+	android:paddingRight="@dimen/spacing_large"
+	android:layout_width="fill_parent"
+	android:clickable="true"
+	android:layout_height="fill_parent">
+
+	<TextView
+		android:id="@+id/tv_download_pos"
+		style="@style/SettingTitleTextAppearance"
+		android:text="@string/download_position"/>
+
+	<EditText
+		android:singleLine="true"
+		android:focusableInTouchMode="false"
+		android:layout_below="@id/tv_download_pos"
+		android:layout_toLeftOf="@+id/ib_skim"
+		android:id="@+id/et_download_path"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:focusable="false"/>
+
+	<ImageButton
+		android:layout_marginBottom="@dimen/spacing_small"
+		android:layout_alignBottom="@id/et_download_path"
+		android:layout_alignParentEnd="true"
+		android:id="@id/ib_skim"
+		android:background="?android:selectableItemBackgroundBorderless"
+		android:contentDescription="@string/skim"
+		android:layout_width="@dimen/d_mini_fab"
+		android:layout_height="@dimen/d_mini_fab"
+		android:src="@drawable/ic_file"
+		android:onClick="selectDownloadFolder"/>
+
+	<TextView
+		android:layout_below="@id/et_download_path"
+		style="@style/SettingTitleTextAppearance"
+		android:text="@string/auto_save"
+		android:id="@+id/tv_auyo_save"/>
+
+	<CheckedTextView
+		android:onClick="setAutoSave"
+		android:clickable="true"
+		android:textAppearance="@android:style/TextAppearance.Material.Body2"
+		android:drawableEnd="?android:listChoiceIndicatorMultiple"
+		android:text="@string/des_auto_save"
+		android:letterSpacing="@dimen/letter_spacing_small"
+		android:layout_marginTop="@dimen/spacing_small"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="left|center_vertical"
+		android:layout_below="@id/tv_auyo_save"
+		android:id="@+id/ctv_auto_save"/>
+
+	<Button
+		style="@style/FlatColoredButtonStyle"
+		android:layout_marginStart="-3dp"
+		android:layout_marginTop="@dimen/spacing_normal"
+		android:layout_marginBottom="@dimen/spacing_large"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/clear_cache"
+		android:textColor="#ffffff"
+		android:onClick="clearCache"
+		android:layout_below="@id/ctv_auto_save"/>
+
+</RelativeLayout>
+

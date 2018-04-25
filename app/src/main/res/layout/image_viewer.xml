@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:id="@+id/rl_back"
+    android:orientation="vertical">
+	
+	<com.bm.library.PhotoView
+		android:transitionName="@string/transition_img"
+		android:id="@+id/pv_img"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerInside"
+		/>
+	
+	<Toolbar
+		android:fitsSystemWindows="true"
+		android:id="@+id/toolbar_image_viewer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="?android:actionBarSize"
+		android:background="#80000000"
+		android:theme="@android:style/ThemeOverlay.Material.Dark"
+		/>
+	
+</RelativeLayout>

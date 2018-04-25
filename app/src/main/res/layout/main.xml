@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<View
+		android:onClick="dismissSetting"
+		android:visibility="invisible"
+		android:elevation="@dimen/z_toolbar"
+		android:layout_below="@+id/toolbar"
+		android:id="@+id/view_scrim"
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:background="@color/scrim"/>
+
+	<FrameLayout
+		android:visibility="invisible"
+		android:id="@+id/fl_setting"
+		android:background="?android:colorPrimary"
+		android:elevation="@dimen/z_toolbar"
+		android:layout_below="@id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<include
+			android:layout_gravity="top"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			layout="@layout/layout_setting"/>
+
+	</FrameLayout>
+
+	<Toolbar
+		style="@style/ToolbarStyle"
+		android:id="@id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?android:actionBarSize"/>
+
+	<RelativeLayout
+		android:id="@+id/rl_input"
+		android:layout_below="@id/toolbar"
+		android:elevation="@dimen/z_card"
+		android:background="@drawable/cornered"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:padding="@dimen/spacing_large"
+		android:paddingBottom="@dimen/spacing_xlarge">
+
+		<TextView
+			android:id="@+id/tv_hint"
+			android:textColor="?android:colorAccent"
+			android:text=" 输入AV号/链接:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+		<EditText
+			android:layout_below="@id/tv_hint"
+			android:layout_toStartOf="@+id/ib_clear_input"
+			android:singleLine="true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/et_input"/>
+
+		<ImageButton
+			android:onClick="clearInput"
+			android:contentDescription="@string/paste"
+			android:layout_alignParentEnd="true"
+			android:layout_alignBottom="@id/et_input"
+			android:src="@drawable/ic_plus"
+			android:rotation="45"
+			android:background="?android:selectableItemBackgroundBorderless"
+			android:layout_margin="@dimen/spacing_small"
+			android:id="@id/ib_clear_input"
+			android:layout_width="@dimen/d_mini_fab"
+			android:layout_height="@dimen/d_mini_fab"/>
+
+		<Spinner
+			android:layout_below="@id/et_input"
+			android:dropDownWidth="600px"
+			android:popupElevation="@dimen/z_popup"
+			android:id="@+id/sp_type"
+			android:layout_marginBottom="@dimen/spacing_normal"
+			android:layout_marginTop="@dimen/spacing_normal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+	</RelativeLayout>
+
+	<ImageButton
+		android:contentDescription="获取"
+		android:layout_below="@id/rl_input"
+		android:layout_gravity="end"
+		android:layout_alignParentEnd="true"
+		android:layout_marginTop="@dimen/minus_d_small_fab"
+		android:layout_marginEnd="@dimen/spacing_large"
+		android:src="@drawable/ic_download"
+		android:elevation="@dimen/z_fab"
+		android:background="@drawable/fab"
+		android:id="@+id/fab_get"
+		android:onClick="getImage"
+		android:layout_width="@dimen/d_small_fab"
+		android:layout_height="@dimen/d_small_fab"/>
+
+	<RelativeLayout
+		android:layout_below="@id/fab_get"
+		android:layout_marginTop="@dimen/spacing_normal"
+		android:padding="@dimen/spacing_large"
+		android:background="@drawable/cornered"
+		android:elevation="@dimen/z_card"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:id="@+id/tv_image_got"
+			android:textColor="?android:colorAccent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="获取的图片："/>
+
+		<ImageView
+			android:id="@+id/iv_empty_view"
+			android:layout_centerInParent="true"
+			android:layout_width="500px"
+			android:layout_height="500px"
+			android:scaleType="centerInside"
+			android:src="@mipmap/empty_view"/>
+
+		<com.bm.library.PhotoView
+			android:alpha="0"
+			android:transitionName="@string/transition_img"
+			android:onClick="viewImage"
+			android:layout_margin="@dimen/spacing_normal"
+			android:id="@+id/iv_image_preview"
+			android:layout_below="@id/tv_image_got"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_above="@+id/btn_share"/>
+
+		<ProgressBar
+			android:layout_marginLeft="@dimen/spacing_normal"
+			android:layout_marginRight="@dimen/spacing_normal"
+			android:layout_centerHorizontal="true"
+			android:layout_below="@id/iv_image_preview"
+			android:id="@+id/pb_process"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:indeterminate="true"
+			android:alpha="0"/>
+
+		<Button
+			android:onClick="shareCover"
+			android:id="@id/btn_share"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentBottom="true"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="@string/share"/>
+
+		<Button
+			android:layout_toLeftOf="@id/btn_share"
+			android:id="@+id/btn_save"
+			android:onClick="saveToStorage"
+			android:layout_alignParentBottom="true"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="保存到本地"/>
+
+		<Button
+			android:onClick="showInfo"
+			android:id="@+id/btn_info"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentBottom="true"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="@string/info"/>
+
+	</RelativeLayout>
+
+</RelativeLayout>
+

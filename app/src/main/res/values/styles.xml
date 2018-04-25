@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="bili_pink">#FB7299</color>
+	<color name="quater_bili_pink">#40FB7299</color>
+	<!--elevation-->
+	<dimen name="z_fab">5dp</dimen>
+	<dimen name="z_toolbar">4dp</dimen>
+	<dimen name="z_popup">6dp</dimen>
+	<dimen name="z_dialog">10dp</dimen>
+
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+		<item name="android:colorAccent">@color/bili_pink</item>
+		<item name="android:colorControlHighlight">@color/quater_bili_pink</item>
+		<item name="android:colorButtonNormal">?android:colorAccent</item>
+		<item name="android:colorEdgeEffect">?android:colorAccent</item>
+		<item name="android:actionOverflowMenuStyle">@style/OverflowStyle</item>
+		
+	</style>
+	<style name="AppTheme.ImageViewer">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowTranslucentStatus">true</item>
+		<item name="android:windowTranslucentNavigation">true</item>
+	</style>
+	<style name="AppTheme.FileChooser">
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowIsTranslucent">true</item>
+	</style>
+	
+	<style name="ToolbarStyle" parent="@android:style/Widget.Toolbar">
+		<item name="android:elevation">@dimen/z_toolbar</item>
+		<item name="android:titleTextAppearance">@style/ToolbarTitleTextAppearance</item>
+		<item name="android:background">?android:attr/colorPrimary</item>
+	</style>
+
+	<style name="ToolbarTitleTextAppearance" parent="@android:style/Widget.TextView">
+		<item name="android:textAllCaps">true</item>
+		<item name="android:letterSpacing">@dimen/letter_spacing_large</item>
+		<item name="android:textSize">@dimen/tsize_large</item>
+	</style>
+	<style name="SettingTitleTextAppearance" parent="@android:style/Widget.TextView">
+		<item name="android:layout_marginTop">@dimen/spacing_normal</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:colorAccent</item>
+		<item name="android:textSize">@dimen/tsize_small</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:letterSpacing">@dimen/letter_spacing_large</item>
+	</style>
+	<style name="PopupMenuStyle" parent="@android:style/Widget.Material.PopupMenu">
+		<item name="android:overlapAnchor">true</item>
+		<item name="android:dropDownVerticalOffset">@dimen/spacing_normal</item>
+		<item name="android:dropDownHorizontalOffset">@dimen/minus_spacing_normal</item>
+
+	</style>
+	<style name="OverflowStyle" parent="@android:style/Widget.Material.PopupMenu">
+		<item name="android:overlapAnchor">true</item>
+		<item name="android:dropDownVerticalOffset">@dimen/spacing_normal</item>
+		<item name="android:dropDownHorizontalOffset">@dimen/minus_spacing_normal</item>
+		<item name="android:popupElevation">@dimen/z_popup</item>
+	</style>
+	<style name="MiniIcon" parent="@android:style/Widget">
+		<item name="android:layout_width">@dimen/d_mini_icon</item>
+		<item name="android:layout_height">@dimen/d_mini_icon</item>
+	</style>
+	
+
+</resources>

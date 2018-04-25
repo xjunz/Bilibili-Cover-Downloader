@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">哔哩哔哩获取</string>
+	<string name="label_view">查看</string>
+    <string name="type_av">视频封面</string>
+	<string name="hint_av">请输入视频(AV)号/链接</string>
+	<string name="type_media">番剧封面</string>
+	<string name="hint_media">请输入番剧号/链接</string>
+	<string name="type_cv">专栏封面</string>
+	<string name="hint_cv">请输入专栏(CV)号/链接</string>
+	<string name="type_vc">小视频封面</string>
+	<string name="hint_vc">请输入小视频(VC)号/链接</string>
+	<string name="type_user">用户头像</string>
+	<string name="hint_user">请输入用户UID/链接</string>
+	<string name="type_live">直播封面</string>
+	<string name="hint_live">请输入直播间号/链接</string>
+	<string name="prompt">提示</string>
+	<string name="get_cover">获取</string>
+	<string name="msg_available_url_detected">检测到剪贴板有可用链接。\n链接：%1$s\n类型：%2$s</string>
+	<string name="transition_img">transition_name_image</string>
+	<string name="msg_no_keyword">还没有输入关键字呢，巧妇难为无米之炊啊</string>
+	<string name="share">分享</string>
+	<string name="info">详情</string>
+	<string name="invert_colors">切换背景</string>
+	<string name="auto_save">自动保存</string>
+	<string name="des_auto_save">取得封面后自动保存到本地储存</string>
+	<string name="paste">粘贴</string>
+	<string name="skim">浏览</string>
+	<string name="cog">设置</string>
+	<string name="about">关于</string>
+	<string name="donate">打赏</string>
+	<string name="msg_donate">打赏以支持我的工作，金额随意。</string>
+	<string name="quit">退出</string>
+	<string name="feedback">反馈</string>
+	<string name="about_os">开源相关</string>
+	<string name="download_position">下载位置</string>
+	<string name="clear_cache">清除缓存</string>
+	<string name="help">帮助</string>
+	<string name="msg_help">正确的使用方法：
+		\n\n（1）在客户端内分享视频/专栏/直播间/用户空间，选择「更多」，分享到本应用即可。
+		\n\n（2）复制视频/专栏/直播间/用户空间链接后，打开本应用，应用会自动识别。
+		\n\n（3）在输入框输入视频/专栏/直播间/用户的ID或链接，点击获取即可。</string>
+	<string name="msg_about">一款获取B站(bilibili.com)各种封面的应用，支持「视频，番剧，专栏，小视频，用户头像，直播间」，旨在实现「需求>获取>分享/保存」的操作连续性。
+	\n\n版本：%s
+	</string>
+</resources>
