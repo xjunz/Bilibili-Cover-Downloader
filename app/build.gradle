@@ -8,8 +8,8 @@ android {
         applicationId "me.xjz814.bili_cover_downloader"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1842501
-        versionName "18.4.25.A"
+        versionCode 1842502
+        versionName "18.4.25.B"
     }
     buildTypes {
         release {

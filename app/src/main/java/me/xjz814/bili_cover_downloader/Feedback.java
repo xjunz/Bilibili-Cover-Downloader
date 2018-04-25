@@ -37,8 +37,14 @@ public class Feedback
 		return true;
 	}
 	
-	public static void about(Activity context){
-		new A14Dialog(context).setTitle(R.string.about).setMsg(String.format(context.getString( R.string.msg_about),App.version_name)).setScrimed(true).show();
+	public static void about(final Activity context){
+		new A14Dialog(context).setTitle(R.string.about).setPositiveButton(R.string.about_os, new OnClickListener(){
+				@Override
+				public void onClick(View p1)
+				{
+					new A14Dialog(context).setTitle(R.string.about_os).setMsg(R.string.msg_about_os).show();
+				}
+			}).setMsg(String.format(context.getString(R.string.msg_about), App.version_name)).setScrimed(true).show();
 	}
 	
 	public static void help(Activity context){

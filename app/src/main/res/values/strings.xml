@@ -36,11 +36,15 @@
 	<string name="download_position">下载位置</string>
 	<string name="clear_cache">清除缓存</string>
 	<string name="help">帮助</string>
+	<string name="about_os">开源相关</string>
+	<string name="msg_about_os">使用的开源项目：\nhttps://github.com/bm-x/PhotoView
+		\n\n查看本应用源代码：\nhttps://github.com/xjz814/Bilibili-Cover-Downloader
+		\n\n©2018 XJZ814</string>
 	<string name="msg_help">正确的使用方法：
 		\n\n（1）在客户端内分享视频/专栏/直播间/用户空间，选择「更多」，分享到本应用即可。
 		\n\n（2）复制视频/专栏/直播间/用户空间链接后，打开本应用，应用会自动识别。
 		\n\n（3）在输入框输入视频/专栏/直播间/用户的ID或链接，点击获取即可。</string>
-	<string name="msg_about">一款获取B站(bilibili.com)各种封面的应用，支持「视频，番剧，专栏，小视频，用户头像，直播间」，旨在实现「需求>获取>分享/保存」的操作连续性。
+	<string name="msg_about">这是一款获取B站(bilibili.com)各种封面的应用，支持「视频，番剧，专栏，小视频，用户头像，直播间」，旨在实现「需求>获取>分享/保存」的操作连续性。
 	\n\n版本：%s
 	</string>
 </resources>

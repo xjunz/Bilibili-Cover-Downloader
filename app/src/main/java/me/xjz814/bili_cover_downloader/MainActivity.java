@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
     {
         super.onCreate(savedInstanceState);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 			== PackageManager.PERMISSION_DENIED)
 		{   
 			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
@@ -82,7 +82,11 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 		ar.recycle();
 		spType.setAdapter(new SpinnerTypeAdapter());
 		clipManager = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-
+		if(SharedPrefManager.isUpdated()){
+			Feedback.help(this);
+			Feedback.about(this);
+		}
+		
 		Intent i=getIntent();
 		shouldDetectInput = true;
 		if (i != null)
@@ -102,7 +106,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 			etInput.setText(input);
 			ibGet.performClick();
 		}
-
+		
 
 
 	}

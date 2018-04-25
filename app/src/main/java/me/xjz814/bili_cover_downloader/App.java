@@ -10,6 +10,7 @@ public class App extends Application
 	public static SharedPreferences SETTINGS;
 	public static SharedPreferences.Editor SETTING_EDITOR;
 	public static String version_name;
+	public static int version_code;
 	
 	@Override
 	public void onCreate()
@@ -19,7 +20,9 @@ public class App extends Application
 		SETTING_EDITOR=SETTINGS.edit();
 		try
 		{
-			 version_name= getPackageManager().getPackageInfo(getPackageName(), 0).versionName;	
+			 PackageInfo pi=getPackageManager().getPackageInfo(getPackageName(), 0);
+			 version_name= pi.versionName;	
+			 version_code=pi.versionCode;
 		}
 		catch (PackageManager.NameNotFoundException e)
 		{
