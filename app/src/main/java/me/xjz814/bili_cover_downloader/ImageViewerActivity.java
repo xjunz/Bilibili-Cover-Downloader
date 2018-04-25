@@ -68,7 +68,7 @@ public class ImageViewerActivity extends BaseActivity
 		{
 			case R.id.share:
 				File file=new File(mCoverImagePath);
-				Uri photoURI = FileProvider.getUriForFile(this, "me.a14xjz.biligetter.fileprovider", file);
+				Uri photoURI = FileProvider.getUriForFile(this, getPackageName()+".fileprovider", file);
 				Intent i=new Intent(Intent.ACTION_SEND);
 				i.putExtra(Intent.EXTRA_STREAM, photoURI);
 				i.setType("image/*");

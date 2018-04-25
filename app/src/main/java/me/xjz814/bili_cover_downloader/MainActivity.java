@@ -474,7 +474,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 	public void shareCover(View view){
 		try{
 		File file=new File(mBean.cachePath);
-		Uri photoURI = FileProvider.getUriForFile(this, "me.a14xjz.biligetter.fileprovider", file);
+		Uri photoURI = FileProvider.getUriForFile(this, getPackageName()+".fileprovider", file);
 		Intent i=new Intent(Intent.ACTION_SEND);
 		i.putExtra(Intent.EXTRA_STREAM, photoURI);
 		i.setType("image/*");
