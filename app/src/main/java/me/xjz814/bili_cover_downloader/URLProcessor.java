@@ -26,6 +26,8 @@ public class URLProcessor
 				return "https://m.bilibili.com/space/"+id;
 			case ImageGetterTask.TASK_TYPE_LIVE:
 				return "http://api.live.bilibili.com/AppRoom/index?device=phone&platform=android&scale=3&room_id="+id;
+			case ImageGetterTask.TASK_TYPE_AUDIO:
+				return "https://m.bilibili.com/audio/au"+id;
 		}
 		return null;
 	}
@@ -59,6 +61,9 @@ public class URLProcessor
 			case ImageGetterTask.TASK_TYPE_LIVE:
 				//示例：http://live.bilibili.com/live/[id].html
 				return extract(input,"\\/(\\d+)");
+			case ImageGetterTask.TASK_TYPE_AUDIO:
+				//示例：https://m.bilibili.com/audio/au[id]
+				return extract(input,"au(\\d+)");
 		}
 		return null;
 	}
@@ -85,6 +90,8 @@ public class URLProcessor
 			return ImageGetterTask.TASK_TYPE_USER;
 		}else if(input.contains("/vc")){
 			return ImageGetterTask.TASK_TYPE_VC;
+		}else if(input.contains("/au")){
+			return ImageGetterTask.TASK_TYPE_AUDIO;
 		}
 		return ImageGetterTask.TASK_TYPE_UNKNOWN;
 	}

@@ -15,21 +15,18 @@ import android.text.*;
 import android.view.*;
 import android.view.View.*;
 import android.view.animation.*;
-import android.view.inputmethod.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
 import java.io.*;
 import java.nio.channels.*;
 import java.util.regex.*;
-import me.xjz814.ui.*;
-import me.xjz814.ui.util.*;
-import me.xjz814.ui.widget.*;
+import me.xjz814.bili_cover_downloader.util.*;
 
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 
 
-public class MainActivity extends BaseActivity implements ImageGetterTask.ImageGetterListener
+public class MainActivity extends Activity implements ImageGetterTask.ImageGetterListener
 {
 	private ImageView ivImagePreview,ivEmptyView;
 	private Toolbar mToolbar;
@@ -46,11 +43,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 	private MediaBean mBean=new MediaBean();
 	private static String CACHE_PATH;
 
-	@Override
-	public boolean onBack()
-	{
-		return false;
-	}
+	
 
 	private EditText etInput;
 	private boolean shouldDetectInput;
@@ -66,12 +59,13 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 		{   
 			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 		}
+
         setContentView(R.layout.main);
 		initViews();
 		CACHE_PATH = getExternalCacheDir().getPath();
 		mStrTypes = getResources().getStringArray(R.array.types);
 		mStrHints = getResources().getStringArray(R.array.hints);
-		ibGet = findView(R.id.fab_get);
+		ibGet = findViewById(R.id.fab_get);
 		TypedArray ar = getResources().obtainTypedArray(R.array.icons);
 		final int len = ar.length();
 		mIcons = new int[len];
@@ -135,21 +129,23 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
     {
 		if (grantResults[0] == PackageManager.PERMISSION_DENIED)
 		{
-			new A14Dialog(this).setTitle("错误").setMsg("请授予本应用读写内部储存权限，否则应用无法正常运行")
-				.setPositiveButton("重试", new OnClickListener(){
+			new AlertDialog.Builder(this).setTitle("错误").setMessage("请授予本应用读写内部储存权限，否则应用无法正常运行")
+				.setPositiveButton("重试", new DialogInterface. OnClickListener(){
 
 					@Override
-					public void onClick(View p1)
+					public void onClick(DialogInterface p1, int p2)
 					{
 						ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
 					}
-				}).setNegativeButton("退出", new OnClickListener(){
+					
+				}).setNegativeButton("退出", new DialogInterface. OnClickListener(){
 
 					@Override
-					public void onClick(View p1)
+					public void onClick(DialogInterface p1, int p2)
 					{
-						System.exit(0);
+						finish();
 					}
+					
 				})
 				.show();
 		}else{
@@ -181,24 +177,25 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 		{
 			return;
 		}
-
+     // android.R.style.TextAppearance_Material_Subhead
 	    clipboardText = text.toString();
 		int type=URLProcessor.judgeType(clipboardText);
 		if (type != ImageGetterTask.TASK_TYPE_UNKNOWN)
 		{
 			spType.setSelection(type);
-			new A14Dialog(this).setMsg(String.format(getString(R.string.msg_available_url_detected), clipboardText, mStrTypes[type]))
+			UiUtils.createTextAutoLinkDialog(this,String.format(getString(R.string.msg_available_url_detected), clipboardText, mStrTypes[type]))
 				.setTitle(R.string.prompt)
-				.setPositiveButton(R.string.get_cover, new OnClickListener(){
+				.setPositiveButton(R.string.get_cover, new DialogInterface.OnClickListener(){
 
 					@Override
-					public void onClick(View p1)
+					public void onClick(DialogInterface p1, int p2)
 					{
 						etInput.setText(clipboardText);
 						etInput.setSelection(0, clipboardText.length());
 						ibGet.performClick();
 					}
-				}).setScrimed(true).enableDefaultNegativeButton().show();
+					
+				}).setNegativeButton(android.R.string.cancel,null).show();
 		}
 
 	}
@@ -309,19 +306,19 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 
 	private void initViews()
 	{
-		mToolbar = findView(R.id.toolbar);
+		mToolbar = findViewById(R.id.toolbar);
 		setActionBar(mToolbar);
-	    spType = findView(R.id.sp_type);
-		etInput = (EditText) findViewById(R.id.et_input);
-		tvHint = findView(R.id.tv_hint);
-		etSavePath = findView(R.id.et_download_path);
+	    spType = findViewById(R.id.sp_type);
+		etInput = findViewById(R.id.et_input);
+		tvHint = findViewById(R.id.tv_hint);
+		etSavePath = findViewById(R.id.et_download_path);
 		etSavePath.setText(SharedPrefManager.getSavePath());
-		pbProcess = findView(R.id.pb_process);
-		ivImagePreview = findView(R.id.iv_image_preview);
-		ivEmptyView = findView(R.id.iv_empty_view);
-		ctvAutoSave=findView(R.id.ctv_auto_save);
+		pbProcess = findViewById(R.id.pb_process);
+		ivImagePreview = findViewById(R.id.iv_image_preview);
+		ivEmptyView = findViewById(R.id.iv_empty_view);
+		ctvAutoSave=findViewById(R.id.ctv_auto_save);
 		ctvAutoSave.setChecked(SharedPrefManager.isAutoSave());
-		flSetting = findView(R.id.fl_setting);
+		flSetting = findViewById(R.id.fl_setting);
 		flSetting.post(new Runnable(){
 
 				@Override
@@ -331,7 +328,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 				}
 			});
 
-		mScrim = findView(R.id.view_scrim);
+		mScrim = findViewById(R.id.view_scrim);
 		spType.setOnItemSelectedListener(new OnItemSelectedListener(){
 
 				@Override
@@ -419,7 +416,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 	public void onGet(MediaBean bean)
 	{
 		Bitmap bmap=bean.coverBmap;
-		bean. filename=URLProcessor.getMD5(bean.coverURL) + ".png";;
+		bean. filename=URLProcessor.getMD5(bean.coverURL) + ".png";
 	    bean.cachePath = CACHE_PATH + "/" + bean.filename;
 		if (bmap != null)
 		{
@@ -434,14 +431,12 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 				toast("Lover～我已迷上门口的老头～");
 			}
 			
-
 				if (SharedPrefManager.isAutoSave())
 				{
 					findViewById(R.id.btn_save).performClick();
 					}else{
 						toast("完成");
 					}
-			
 		}
 		
 		else
@@ -467,6 +462,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 		}
 		ActivityOptions ops=  ActivityOptions.makeSceneTransitionAnimation(this, view, getString(R.string.transition_img));
 		Intent i=new Intent(this, ImageViewerActivity.class);
+		//不直接传递bitmap，因为过大的bitmap会导致错误，所以我们传递图片的缓存路径
 		i.putExtra("source_img_path", mBean.cachePath);
 		startActivity(i, ops.toBundle());
 	}
@@ -479,7 +475,9 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 		i.putExtra(Intent.EXTRA_STREAM, photoURI);
 		i.setType("image/*");
 		i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-		startActivity(i);
+			Intent chooser=Intent.createChooser(i,"分享到");
+			
+		startActivity(chooser);
 		}catch(Exception e){
 			toast("分享失败");
 			e.printStackTrace();
@@ -510,7 +508,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 	{
 		if (etInput.getText().toString().trim().equals(""))
 		{
-			new SnackBar(this).setMessage(R.string.msg_no_keyword).show();
+			//toast("");
 			return;
 		}
 		ImeUtils.hideIme(view);
@@ -531,13 +529,17 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 
 	public void clearCache(View view)
 	{
-		new A14Dialog(this).setTitle("清除缓存").setMsg("你确定要清除历史图片缓存吗？").setPositiveButton(android.R.string.ok
-			, new OnClickListener(){
+		
+		new AlertDialog.Builder(this).setTitle("清除缓存").setMessage("你确定要清除历史图片缓存吗？").setPositiveButton(android.R.string.ok
+			, new DialogInterface.OnClickListener(){
+
 				@Override
-				public void onClick(View p1)
+				public void onClick(DialogInterface p1, int p2)
 				{
+				
 					try
 					{
+						ivImagePreview.setImageBitmap(null);
 						for (File i:new File(CACHE_PATH).listFiles())
 						{
 							i.delete();
@@ -549,7 +551,7 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 					}
 
 				}
-			}).enableDefaultNegativeButton().show();
+			}).show();
 
 	}
 
@@ -564,17 +566,17 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 				+ "规格：" + mBean.coverBmap.getWidth() + "x" + mBean.coverBmap.getHeight() + "\n"
 				+ "缓存位置：" + mBean.cachePath;
 
-			new A14Dialog(this).setTitle("详情")
-				.setMsg(info).setPositiveButton(android.R.string.copy, new
+			UiUtils.createTextAutoLinkDialog(this,info).setTitle("详情")
+				.setPositiveButton(android.R.string.copy, new DialogInterface.
 				OnClickListener(){
 
 					@Override
-					public void onClick(View p1)
+					public void onClick(DialogInterface p1, int p2)
 					{
 						copyToClipboard(info);
 						toast("复制完成");
 					}
-				}).enableDefaultNegativeButton().setScrimed(true)
+				})
 				.show();
 		}
 		catch (Exception e)
@@ -625,13 +627,17 @@ public class MainActivity extends BaseActivity implements ImageGetterTask.ImageG
 
 	}
 
-	private void toast(Object obj)
+	private void toast(String obj)
 	{
 		if (obj == null)
 		{obj = "null";}
 		Toast.makeText(this, obj.toString(), 0).show();
 	}
-
+	private void toast(int  res)
+	{
+		Toast.makeText(this, res, 0).show();
+	}
+	
 	public  void copyToClipboard(String str)
 	{
 		clipManager.setText(str);

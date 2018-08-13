@@ -42,7 +42,7 @@
 		android:id="@+id/rl_input"
 		android:layout_below="@id/toolbar"
 		android:elevation="@dimen/z_card"
-		android:background="@drawable/cornered"
+		android:background="?android:colorBackground"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
@@ -108,11 +108,11 @@
 		android:layout_below="@id/fab_get"
 		android:layout_marginTop="@dimen/spacing_normal"
 		android:padding="@dimen/spacing_large"
-		android:background="@drawable/cornered"
+		android:background="?android:colorBackground"
 		android:elevation="@dimen/z_card"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
-
+        
 		<TextView
 			android:id="@+id/tv_image_got"
 			android:textColor="?android:colorAccent"

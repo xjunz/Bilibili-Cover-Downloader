@@ -2,18 +2,43 @@
 <resources>
 	<color name="bili_pink">#FB7299</color>
 	<color name="quater_bili_pink">#40FB7299</color>
+	<color name="scrim">#40000000</color>
 	<!--elevation-->
 	<dimen name="z_fab">5dp</dimen>
-	<dimen name="z_toolbar">4dp</dimen>
+	<dimen name="z_toolbar">6px</dimen>
 	<dimen name="z_popup">6dp</dimen>
 	<dimen name="z_dialog">10dp</dimen>
-
+	<dimen name="z_card">5px</dimen>
+	<!--textsize-->
+	<dimen name="tsize_small">13sp</dimen>
+	<dimen name="tsize_normal">16sp</dimen>
+	<dimen name="tsize_large">18sp</dimen>
+	<!--spacing-->
+	<dimen name="spacing_small">4dp</dimen>
+	<dimen name="minus_spacing_small">-4dp</dimen>
+	<dimen name="spacing_normal">8dp</dimen>
+	<dimen name="minus_spacing_normal">-8dp</dimen>
+	<dimen name="spacing_large">16dp</dimen>
+	<dimen name="spacing_xlarge">32dp</dimen>
+	<dimen name="spacing_xxlarge">40dp</dimen>
+	<item name="letter_spacing_small" type="dimen">.05</item>
+	<item name="letter_spacing_normal" type="dimen">.1</item>
+	<item name="letter_spacing_large" type="dimen">.16</item>
+ 	<dimen name="r_card_corner">3dp</dimen>
+	<!--width & height-->
+	<dimen name="d_normal_fab">48dp</dimen>
+    <dimen name="d_small_fab">40dp</dimen>
+    <dimen name="d_mini_fab">32dp</dimen>
+	
+	
     <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
 		<item name="android:colorAccent">@color/bili_pink</item>
 		<item name="android:colorControlHighlight">@color/quater_bili_pink</item>
 		<item name="android:colorButtonNormal">?android:colorAccent</item>
 		<item name="android:colorEdgeEffect">?android:colorAccent</item>
 		<item name="android:actionOverflowMenuStyle">@style/OverflowStyle</item>
+		<item name="android:alertDialogTheme">@style/DialogStyle</item>
+		<item name="android:alertDialogStyle">@style/DialogStyle</item>
 		
 	</style>
 	<style name="AppTheme.ImageViewer">
@@ -22,6 +47,8 @@
 		<item name="android:windowTranslucentNavigation">true</item>
 	</style>
 	<style name="AppTheme.FileChooser">
+		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="android:windowAnimationStyle">@null</item>
 		<item name="android:windowBackground">@android:color/transparent</item>
 		<item name="android:windowIsTranslucent">true</item>
 	</style>
@@ -63,5 +90,26 @@
 		<item name="android:layout_height">@dimen/d_mini_icon</item>
 	</style>
 	
-
+	<style name="DialogStyle" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+		<item name="android:backgroundDimEnabled">true</item>
+		<item name="android:backgroundDimAmount">0.25</item>
+        <item name="android:windowNoTitle">true</item>
+		<item name="android:colorAccent">@color/bili_pink</item> 
+		<item name="android:colorButtonNormal">@color/bili_pink</item>
+		<item name="android:colorControlHighlight">@color/quater_bili_pink</item>
+        <item name="android:statusBarColor">?android:attr/colorPrimaryDark</item>
+		<item name="android:alertDialogTheme">@style/AppTheme</item>
+		<item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+		<item name="android:windowElevation">4dp</item>
+		<item name="android:windowBackground">@drawable/dialog_background</item>
+		 </style>
+		  
+	<style name="DialogAnimation" parent="@android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+		<item name="android:windowExitAnimation">@anim/dialog_exit</item>
+  	</style>
+		<style name="FlatColoredButtonStyle">
+		<item name="android:textColor">#ffffff</item>
+		<item name="android:stateListAnimator">@animator/flat_raise</item>
+	</style>
 </resources>

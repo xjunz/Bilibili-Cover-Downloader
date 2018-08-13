@@ -2,4 +2,5 @@
 	<resources>
 		<dimen name="d_mini_icon">20dp</dimen>
 		<dimen name="minus_d_small_fab">-20dp</dimen>
+		<dimen name="r_dialog_corner">5dp</dimen>
 	</resources>

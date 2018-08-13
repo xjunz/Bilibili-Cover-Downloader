@@ -3,30 +3,26 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 import java.io.*;
-import me.xjz814.ui.*;
-import me.xjz814.ui.widget.*;
+
 import org.json.*;
 import android.widget.CompoundButton.*;
-import me.xjz814.ui.util.*;
 import java.util.*;
 import android.util.*;
 import android.content.*;
 import android.transition.*;
+import android.app.*;
 
-public class FileChooserActivity extends BaseActivity
+public class FileChooserActivity extends Activity
 {
 
 	private ListView mFileList;
     private RadioButton rbCurdir;
-	private A14Dialog dialog;
+	private Dialog dialog;
 	private TextView tvCurPath;
 
 	public static final String PATH_RETURNED="path_returned";
-	@Override
-	public boolean onBack()
-	{
-		return false;
-	}
+	
+	
 	private String selectedPath;
 	private int position;
 	@Override
@@ -35,9 +31,9 @@ public class FileChooserActivity extends BaseActivity
 
 		super.onCreate(savedInstanceState);
 		ViewGroup content=(ViewGroup) getLayoutInflater().inflate(R.layout.layout_dir_chooser, null);
-		mFileList = (ListView) content.findViewById(R.id.lv_file);
-		tvCurPath=(TextView) content.findViewById(R.id.tv_cur_path);
-		rbCurdir=(RadioButton) content.findViewById(R.id.rb_cur_dir);
+		mFileList = content.findViewById(R.id.lv_file);
+		tvCurPath=content.findViewById(R.id.tv_cur_path);
+		rbCurdir=content.findViewById(R.id.rb_cur_dir);
 		rbCurdir.setChecked(SharedPrefManager.getSavePath().equals(curPath));
 		rbCurdir.setOnClickListener(new OnClickListener(){
 
@@ -52,32 +48,29 @@ public class FileChooserActivity extends BaseActivity
 			});
 		tvCurPath.setText(curPath);
 		selectedPath=SharedPrefManager.getSavePath();
-		dialog = new A14Dialog(this).setCancelable(false)
-			.setPositiveButton("选中", new OnClickListener(){
+		dialog = new AlertDialog.Builder(this).setCancelable(false)
+			.setPositiveButton("选中", new DialogInterface. OnClickListener(){
 
 				@Override
-				public void onClick(View p1)
+				public void onClick(DialogInterface p1, int p2)
 				{
 					Intent i=new Intent();
 					setIntent(i.putExtra(PATH_RETURNED,selectedPath));
 					setResult(RESULT_OK,i);
 					finish();
-					
 				}
 
 			
-			}).setNegativeButton("取消", new OnClickListener(){
+			}).setNegativeButton("取消", new DialogInterface.OnClickListener(){
 
-									 @Override
-									 public void onClick(View p1)
-									 {
-										 setResult(RESULT_CANCELED);
-										 finish();
-									 }
-									 
-			
-		}).setView(content);
-		dialog.show();
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					setResult(RESULT_CANCELED);
+					finish();
+				}							
+									 	
+		}).setView(content).show();
 		mFileList.setAdapter(new FileListAdapter(new File("/sdcard")));
 		mFileList.setOnScrollListener(new ListView.OnScrollListener() {     
 
@@ -124,7 +117,6 @@ public class FileChooserActivity extends BaseActivity
 		private File file;
 		private File[] dirList;
 		
-		
 		public FileListAdapter(File file)
 		{
 			this.file = file;
@@ -141,8 +133,7 @@ public class FileChooserActivity extends BaseActivity
 
 					@Override
 					public int compare(File p1, File p2)
-					{
-						
+					{			
 						return p1.getName().compareToIgnoreCase(p2.getName());
 					}
 					
@@ -181,8 +172,8 @@ public class FileChooserActivity extends BaseActivity
 
 				holder = new ViewHolder((ViewGroup)p2);
 				p2.setTag(holder);
-				holder.tvFilename = (TextView) p2.findViewById(R.id.tv_filename);
-				holder.rbFile = (RadioButton) p2.findViewById(R.id.rb_file);
+				holder.tvFilename =p2.findViewById(R.id.tv_filename);
+				holder.rbFile = p2.findViewById(R.id.rb_file);
 				
 			}
 			

@@ -14,12 +14,15 @@
 	<string name="hint_user">请输入用户UID/链接</string>
 	<string name="type_live">直播封面</string>
 	<string name="hint_live">请输入直播间号/链接</string>
+	<string name="type_audio">音频封面</string>
+	<string name="hint_audio">请输入音频(AU)号/链接</string>
 	<string name="prompt">提示</string>
 	<string name="get_cover">获取</string>
 	<string name="msg_available_url_detected">检测到剪贴板有可用链接。\n链接：%1$s\n类型：%2$s</string>
 	<string name="transition_img">transition_name_image</string>
 	<string name="msg_no_keyword">还没有输入关键字呢，巧妇难为无米之炊啊</string>
 	<string name="share">分享</string>
+	<string name="share_failed">分享了个寂寞～</string>
 	<string name="info">详情</string>
 	<string name="invert_colors">切换背景</string>
 	<string name="auto_save">自动保存</string>
@@ -29,7 +32,7 @@
 	<string name="cog">设置</string>
 	<string name="about">关于</string>
 	<string name="donate">打赏</string>
-	<string name="msg_donate">打赏以支持我的工作，金额随意。</string>
+	<string name="msg_donate">打赏以支持我的工作，感谢您的支持。点击返回键关闭。</string>
 	<string name="quit">退出</string>
 	<string name="feedback">反馈</string>
 	<string name="about_os">开源相关</string>

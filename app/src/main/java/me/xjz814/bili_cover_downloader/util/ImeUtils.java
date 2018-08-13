@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package me.xjz814.bili_cover_downloader;
+package me.xjz814.bili_cover_downloader.util;
 
 import android.content.Context;
 import android.os.ResultReceiver;

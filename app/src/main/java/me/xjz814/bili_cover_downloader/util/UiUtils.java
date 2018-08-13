@@ -1,4 +1,4 @@
-package me.xjz814.ui.util;
+package me.xjz814.bili_cover_downloader.util;
 
 import android.app.*;
 import android.content.*;
@@ -6,6 +6,7 @@ import android.view.*;
 import android.view.View.*;
 import android.view.animation.*;
 import android.widget.*;
+import me.xjz814.bili_cover_downloader.*;
 
 public class UiUtils
 {
@@ -27,37 +28,27 @@ public class UiUtils
 			: fast_out_slow_in;
 	}
 	
-
-	//通过在图片旋转过程中切换图片营造过渡效果
-	public static void windmillTrick(Context context,final ImageView v, final int imageRes, int rotation)
-	{
-		v.animate().rotation(rotation).setDuration(200)
-			.setInterpolator(getLinearOutSlowIn(context))
-			.start();
-		v.postDelayed(new Runnable(){
-				@Override
-				public void run()
-				{
-					v.setImageResource(imageRes);
-				}
-			}, 50);
+	public static AlertDialog.Builder createTextAutoLinkDialog(Activity context,String str){
+		TextView autoLinked=(TextView) context.getLayoutInflater().inflate(R.layout.layout_linked_textview,null,false);
+		autoLinked.setText(str);
+		return new AlertDialog.Builder(context).setView(autoLinked);
 	}
+	
 
+	public  static AlertDialog.Builder createTextAutoLinkDialog(Activity context,int strRes){
+		return createTextAutoLinkDialog(context,context.getString(strRes));
+	}
+	
+	
 	public static void toast(Context context,CharSequence str)
 	{
 		Toast.makeText(context, str, 0).show();
 	}
 
-	
+
 
 	
 	
-
-	public static int dip2px(Context context,int dipValue)
-	{
-		return (int)(dipValue * context.getResources().getDisplayMetrics().density + .5);
-	}
-
 
 	public static void visible(View...views)
 	{

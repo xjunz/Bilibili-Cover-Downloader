@@ -10,9 +10,10 @@ import android.view.*;
 import android.widget.*;
 import com.bm.library.*;
 import java.io.*;
-import me.xjz814.ui.*;
 
-public class ImageViewerActivity extends BaseActivity
+import android.app.*;
+
+public class ImageViewerActivity extends Activity
 {
 
 	private Toolbar toolbar;
@@ -20,11 +21,7 @@ public class ImageViewerActivity extends BaseActivity
 	private Bitmap mCoverImage;
 	private View mBack;
 	private String mCoverImagePath;
-	@Override
-	public boolean onBack()
-	{
-		return false;
-	}
+	
 	private int mColorLight,mColorDark;
 
 	@Override
@@ -32,8 +29,8 @@ public class ImageViewerActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.image_viewer);
-		mPhotoView = findView(R.id.pv_img);
-		mBack = findView(R.id.rl_back);
+		mPhotoView = findViewById(R.id.pv_img);
+		mBack = findViewById(R.id.rl_back);
 		mColorLight = getColor(android.R.color.background_light);
 		mColorDark = getColor(android.R.color.background_dark);
 		curBackgroundColor = mColorLight;
@@ -47,7 +44,7 @@ public class ImageViewerActivity extends BaseActivity
 		set.addTransition(new ChangeImageTransform());
 		mPhotoView.setImageBitmap(mCoverImage);
 		getWindow().setSharedElementEnterTransition(set);
-		toolbar = findView(R.id.toolbar_image_viewer);
+		toolbar = findViewById(R.id.toolbar_image_viewer);
 		setActionBar(toolbar);
 
 	}

@@ -1,0 +1,12 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:autoLink="web"
+	android:paddingTop="@dimen/spacing_normal"
+	android:paddingBottom="@dimen/spacing_normal"
+	android:paddingLeft="24dp"
+	android:paddingRight="20dp"
+    android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+	>
+    
+</TextView>

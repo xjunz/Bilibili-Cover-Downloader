@@ -17,6 +17,7 @@ public class ImageGetterTask extends AsyncTask<Void,String,MediaBean>
 	public static final int TASK_TYPE_VC=3;
 	public static final int TASK_TYPE_USER=4;
 	public static final int TASK_TYPE_LIVE=5;
+	public static final int TASK_TYPE_AUDIO=6;
 
 	public interface ImageGetterListener
 	{

@@ -57,6 +57,14 @@ public class URLExtractor
 				}
 		
 				break;
+			case ImageGetterTask.TASK_TYPE_AUDIO:
+				p=Pattern.compile("\"cover_url\":\"([^\"]*)\"");
+				m=p.matcher(html);
+				if(m.find()){
+					return m.group(1).replace("\\","");
+				}
+				
+				break;
 		}
 		return null;
 	}

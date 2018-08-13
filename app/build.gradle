@@ -8,8 +8,8 @@ android {
         applicationId "me.xjz814.bili_cover_downloader"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1842503
-        versionName "18.4.25.C"
+        versionCode 1881301
+        versionName "18.8.13.A"
     }
     buildTypes {
         release {
@@ -21,7 +21,8 @@ android {
 
 dependencies {
 	compile 'com.android.support:support-v4:+'
-	compile project(':a14_ui')
-	compile 'com.bm.photoview:library:1.4.1'
+	//compile project(':a14_ui')
+	
+	compile 'com.bm.photoview:library:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
